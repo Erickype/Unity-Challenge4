@@ -14,6 +14,7 @@ public class PlayerControllerX : MonoBehaviour
 
     private float normalStrength = 10; // how hard to hit enemy without powerup
     private float powerupStrength = 25; // how hard to hit enemy with powerup
+    public float explosionForce = 1000; // how strong the explosion is
     
     void Start()
     {
@@ -29,6 +30,11 @@ public class PlayerControllerX : MonoBehaviour
 
         // Set powerup indicator position to beneath player
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
+
+        if (Input.GetButton("Jump"))
+        {
+            playerRb.AddForce(focalPoint.transform.forward * explosionForce * Time.deltaTime);
+        }
 
     }
 
