@@ -1,20 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyX : MonoBehaviour
 {
     [SerializeField]
     public float speed;
+    private float baseSpeed;
     private Rigidbody enemyRb;
     private GameObject playerGoal;
+    private GameObject spawn;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
         playerGoal = GameObject.Find("Player Goal");
-        speed = 100;
+        spawn = GameObject.Find("Spawn Manager");
+        var sp = spawn.GetComponent<SpawnManagerX>();
+        speed = sp.baseSpeed;
     }
 
     // Update is called once per frame
@@ -37,6 +42,11 @@ public class EnemyX : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+
+    public void SetBaseSpeed(float baseSpeed)
+    {
+        this.baseSpeed = baseSpeed;
     }
 
 }
