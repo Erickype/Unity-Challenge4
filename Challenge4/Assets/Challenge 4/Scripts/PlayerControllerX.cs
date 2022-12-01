@@ -14,7 +14,7 @@ public class PlayerControllerX : MonoBehaviour
 
     private float normalStrength = 10; // how hard to hit enemy without powerup
     private float powerupStrength = 25; // how hard to hit enemy with powerup
-    public float explosionForce = 1000; // how strong the explosion is
+    private float explosionForce = 1000; // how strong the explosion is
     
     void Start()
     {
